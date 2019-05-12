@@ -317,4 +317,17 @@ func swapPlayers(team1: inout [Dictionary<String, String>], team2: inout [Dictio
     }
 } // func
 
+// Assign all players to the teams
+assignPlayersToTeams(players: players, experiencedPlayers: experiencedPlayers)
+
+
+var breakout = 0
+// Swap players until in each team is the same amunt of experienced players and the average height is equal or less the maximal diccerence (1.5 inch). If its impossible break after 100.000 iterations
+while !checkAverageHeightEquality(team1: teamRaptors, team2: teamSharks, team3: teamDragons) || !checkExperiencedPlayersEquality(team1: teamRaptors, team2: teamSharks, team3: teamDragons) {
+    swapPlayers(team1: &teamDragons, team2: &teamSharks, team3: &teamRaptors)
+    if breakout == 100000 {
+        break
+    }
+    breakout += 1
+}
 
