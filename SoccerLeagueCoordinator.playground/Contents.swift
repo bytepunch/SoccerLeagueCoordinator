@@ -331,3 +331,79 @@ while !checkAverageHeightEquality(team1: teamRaptors, team2: teamSharks, team3: 
     breakout += 1
 }
 
+
+/*
+ ####################################
+ ############# Part 3 ###############
+ ####################################
+ */
+
+/*
+ Team practice dates/times:
+ 
+ Dragons - March 17, 1pm
+ Sharks - March 17, 3pm
+ Raptors - March 18, 1pm
+ */
+
+let practiceDateTime = [
+    ["team": "Dragons", "date": "March 17", "time": "1pm"],
+    ["team": "Sharks", "date": "March 17", "time": "3pm"],
+    ["team": "Raptors", "date": "March 18", "time": "1pm"]
+]
+
+let teamDragonsHash = teamDragons.hashValue
+let teamSharksHash = teamSharks.hashValue
+let teamRaptorsHash = teamRaptors.hashValue
+
+
+
+var letters: [String] = []
+
+func writeAndPrintLetters(team1: [Dictionary<String, String>], team2: [Dictionary<String, String>],  team3: [Dictionary<String, String>]){
+    
+    
+    
+    let allTeams = [team1, team2, team3]
+    
+    // Iterate through all teams
+    for team in allTeams{
+        
+        // Check team
+        if team.hashValue == teamDragonsHash{
+            // Iteare through team
+            for player in team{
+                let tempLetter = "Dear \(player["guardiansNames"]!)! \(player["name"]!) has been placed in team \(practiceDateTime[0]["team"]!). Training starts at \(practiceDateTime[0]["date"]!), \(practiceDateTime[0]["time"]!). "
+                letters.append(tempLetter)
+                print(tempLetter)
+            }
+        } else if(team.hashValue == teamSharksHash){
+            for player in team{
+                let tempLetter = "Dear \(player["guardiansNames"]!)! \(player["name"]!) has been placed in team \(practiceDateTime[1]["team"]!). Training starts at \(practiceDateTime[1]["date"]!), \(practiceDateTime[1]["time"]!). "
+                letters.append(tempLetter)
+                print(tempLetter)
+            }
+        } else if(team.hashValue == teamRaptorsHash){
+            for player in team{
+                let tempLetter = "Dear \(player["guardiansNames"]!)! \(player["name"]!) has been placed in team \(practiceDateTime[2]["team"]!). Training starts at \(practiceDateTime[2]["date"]!), \(practiceDateTime[2]["time"]!). "
+                letters.append(tempLetter)
+                print(tempLetter)
+            }
+        }
+        
+        print("")
+        
+        
+    }
+    
+    
+    
+    
+    
+    
+}
+
+
+writeAndPrintLetters(team1: teamDragons, team2: teamSharks, team3: teamRaptors)
+
+
