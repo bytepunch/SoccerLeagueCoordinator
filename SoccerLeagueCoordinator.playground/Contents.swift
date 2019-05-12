@@ -98,4 +98,32 @@ players.append(player16)
 players.append(player17)
 players.append(player18)
 
+var experiencedPlayers = 0
+var averageHeight = 0.0
+
+// Amount of experienced players in an array of dictionaries
+func amountOfExperienced(players: [Dictionary<String, String>]) -> Int{
+    var amountOfExperiencedPlayers = 0
+    for player in players{
+        if (player["playedSoccerBefore"] == "true") {
+            amountOfExperiencedPlayers += 1
+        }
+    }
+    return amountOfExperiencedPlayers
+}
+
+// Average height of players in an array of dictionaries
+func averageHeightOf(players: [Dictionary<String, String>]) -> Double{
+    var averageHeight: Double = 0
+    for player in players{
+        if Double(player["heightInInches"]!) != nil {
+            averageHeight += Double(player["heightInInches"]!)!
+        }
+    }
+    averageHeight = averageHeight / Double(players.count)
+    return averageHeight
+}
+
+experiencedPlayers = amountOfExperienced(players: players)
+averageHeight = averageHeightOf(players: players)
 
