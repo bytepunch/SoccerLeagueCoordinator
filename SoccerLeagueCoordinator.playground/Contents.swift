@@ -68,3 +68,34 @@ let player16: [String: String] = ["name": "Phillip Helm", "heightInInches": "44"
 let player17: [String: String] = ["name": "Les Clay", "heightInInches": "42", "playedSoccerBefore": "true", "guardiansNames": "Wynonna Brown"]
 
 let player18: [String: String] = ["name": "Herschel Krustofski", "heightInInches": "45", "playedSoccerBefore": "true", "guardiansNames": "Hyman and Rachel Krustofski"]
+
+
+// All players
+var players = [Dictionary<String, String>]()
+// Players of team Sharks
+var teamSharks = [Dictionary<String, String>]()
+// Players of team Dragons
+var teamDragons = [Dictionary<String, String>]()
+// Players of team Raptors
+var teamRaptors = [Dictionary<String, String>]()
+
+players.append(player1)
+players.append(player2)
+players.append(player3)
+players.append(player4)
+players.append(player5)
+players.append(player6)
+players.append(player7)
+players.append(player8)
+players.append(player9)
+players.append(player10)
+players.append(player11)
+players.append(player12)
+players.append(player13)
+players.append(player14)
+players.append(player15)
+players.append(player16)
+players.append(player17)
+players.append(player18)
+
+
