@@ -255,3 +255,66 @@ func checkExperiencedPlayersEquality(team1: [Dictionary<String, String>], team2:
 } // func
 
 
+// Swap players from one team to another team by random
+func swapPlayers(team1: inout [Dictionary<String, String>], team2: inout [Dictionary<String, String>],  team3: inout [Dictionary<String, String>]){
+    
+    var randTeam1 = Int.random(in: 1...3)
+    var randTeam2 = Int.random(in: 1...3)
+    
+    let randPlayer = Int.random(in: 0...team1.count-1)
+    //let randPlayer2 = Int.random(in: 0...team2.count-1)
+    
+    while randTeam1 == randTeam2{
+        randTeam2 = Int.random(in: 1...3)
+    }
+    
+    //print("RandTeam1: \(randTeam1)")
+    //print("RandTeam2: \(randTeam2)")
+    //print("")
+    switch randTeam1 {
+    case 1:
+        switch randTeam2 {
+        case 2:
+            let tempPlayer = team2[randPlayer]
+            team2[randPlayer] = team1[randPlayer]
+            team1[randPlayer] = tempPlayer
+        case 3:
+            let tempPlayer = team3[randPlayer]
+            team3[randPlayer] = team1[randPlayer]
+            team1[randPlayer] = tempPlayer
+        default:
+            break
+        }
+    case 2:
+        switch randTeam2 {
+        case 1:
+            let tempPlayer = team1[randPlayer]
+            team1[randPlayer] = team2[randPlayer]
+            team2[randPlayer] = tempPlayer
+        case 3:
+            let tempPlayer = team3[randPlayer]
+            team3[randPlayer] = team2[randPlayer]
+            team2[randPlayer] = tempPlayer
+        default:
+            break
+        }
+    case 3:
+        switch randTeam2 {
+        case 1:
+            let tempPlayer = team1[randPlayer]
+            team1[randPlayer] = team3[randPlayer]
+            team3[randPlayer] = tempPlayer
+        case 2:
+            let tempPlayer = team2[randPlayer]
+            team2[randPlayer] = team3[randPlayer]
+            team3[randPlayer] = tempPlayer
+        default:
+            break
+            
+        }
+    default:
+        break
+    }
+} // func
+
+
