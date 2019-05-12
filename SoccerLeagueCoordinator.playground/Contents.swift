@@ -344,26 +344,25 @@ func writeAndPrintLetters(team1: [Dictionary<String, String>], team2: [Dictionar
     let allTeams = [team1, team2, team3]
     // Iterate through all teams
     for team in allTeams{
-        
         // Check team
         if team.hashValue == teamDragonsHash{
             // Iteare through team
             for player in team{
-                let tempLetter = "Dear \(player["guardiansNames"]!)! \(player["name"]!) has been placed in team \(practiceDateTime[0]["team"]!). Training starts at \(practiceDateTime[0]["date"]!), \(practiceDateTime[0]["time"]!). "
+                let tempLetter = "Dear \(player["guardiansNames"]!)!\n\n\(player["name"]!) has been placed in team \(practiceDateTime[0]["team"]!).\nTraining starts at \(practiceDateTime[0]["date"]!), \(practiceDateTime[0]["time"]!).\n\nYours sincerely \n\nJörg Klausewitz"
                 letters.append(tempLetter)
-                print(tempLetter)
+                //print(tempLetter)
             }
         } else if(team.hashValue == teamSharksHash){
             for player in team{
-                let tempLetter = "Dear \(player["guardiansNames"]!)! \(player["name"]!) has been placed in team \(practiceDateTime[1]["team"]!). Training starts at \(practiceDateTime[1]["date"]!), \(practiceDateTime[1]["time"]!). "
+                let tempLetter = "Dear \(player["guardiansNames"]!)!\n\n\(player["name"]!) has been placed in team \(practiceDateTime[1]["team"]!).\nTraining starts at \(practiceDateTime[1]["date"]!), \(practiceDateTime[1]["time"]!).\n\nYours sincerely \n\nJörg Klausewitz"
                 letters.append(tempLetter)
-                print(tempLetter)
+                //print(tempLetter)
             }
         } else if(team.hashValue == teamRaptorsHash){
             for player in team{
-                let tempLetter = "Dear \(player["guardiansNames"]!)! \(player["name"]!) has been placed in team \(practiceDateTime[2]["team"]!). Training starts at \(practiceDateTime[2]["date"]!), \(practiceDateTime[2]["time"]!). "
+                let tempLetter = "Dear \(player["guardiansNames"]!)!\n\n\(player["name"]!) has been placed in team \(practiceDateTime[2]["team"]!). Training starts at \(practiceDateTime[2]["date"]!), \(practiceDateTime[2]["time"]!).\n\nYours sincerely \n\nJörg Klausewitz"
                 letters.append(tempLetter)
-                print(tempLetter)
+                //print(tempLetter)
             }
         }
         print("")
@@ -371,5 +370,10 @@ func writeAndPrintLetters(team1: [Dictionary<String, String>], team2: [Dictionar
 }
 
 writeAndPrintLetters(team1: teamDragons, team2: teamSharks, team3: teamRaptors)
+
+for letter in letters{
+    print (letter)
+    print ("")
+}
 
 
