@@ -304,7 +304,7 @@ assignPlayersToTeams(players: players, experiencedPlayers: experiencedPlayers)
 
 
 var breakout = 0
-// Swap players until in each team is the same amunt of experienced players and the average height is equal or less the maximal diccerence (1.5 inch). If its impossible break after 100.000 iterations
+// Swap players until in each team is the same amunt of experienced players and the average height is equal or less the maximal difference (1.5 inches). If its impossible break after 100.000 iterations
 while !checkAverageHeightEquality(team1: teamRaptors, team2: teamSharks, team3: teamDragons) || !checkExperiencedPlayersEquality(team1: teamRaptors, team2: teamSharks, team3: teamDragons) {
     swapPlayers(team1: &teamDragons, team2: &teamSharks, team3: &teamRaptors)
     if breakout == 100000 {
@@ -369,9 +369,16 @@ func writeAndPrintLetters(team1: [Dictionary<String, String>], team2: [Dictionar
     }
 }
 
+// Print the letters in console
+func printLettersInConsole(){
+    for letter in letters{
+        print (letter)
+        print ("\n\n\n")
+    }
+}
+
 writeAndPrintLetters(team1: teamDragons, team2: teamSharks, team3: teamRaptors)
 
-for letter in letters{
-    print (letter)
-    print ("\n\n\n")
-}
+printLettersInConsole()
+
+
