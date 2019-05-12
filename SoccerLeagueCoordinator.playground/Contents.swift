@@ -339,7 +339,7 @@ let teamRaptorsHash = teamRaptors.hashValue
 
 var letters: [String] = []
 
-// Write and print all the letters an fill the letters collection
+// Write and print all the letters and fill the letters collection
 func writeAndPrintLetters(team1: [Dictionary<String, String>], team2: [Dictionary<String, String>],  team3: [Dictionary<String, String>]){
     let allTeams = [team1, team2, team3]
     // Iterate through all teams
@@ -373,7 +373,5 @@ writeAndPrintLetters(team1: teamDragons, team2: teamSharks, team3: teamRaptors)
 
 for letter in letters{
     print (letter)
-    print ("")
+    print ("\n\n\n")
 }
-
-
