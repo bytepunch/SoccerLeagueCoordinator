@@ -98,6 +98,15 @@ players.append(player16)
 players.append(player17)
 players.append(player18)
 
+
+
+/*
+ ####################################
+ ############# Part 2 ###############
+ ####################################
+ */
+
+
 var experiencedPlayers = 0
 var averageHeight = 0.0
 
