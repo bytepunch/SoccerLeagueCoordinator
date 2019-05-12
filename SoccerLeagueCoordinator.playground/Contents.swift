@@ -180,3 +180,78 @@ func assignPlayersToTeams(players: [Dictionary<String, String>], experiencedPlay
     } // loop
 } // func
 
+
+
+// Check if average height in teams is nearly equal
+func checkAverageHeightEquality(team1: [Dictionary<String, String>], team2: [Dictionary<String, String>], team3: [Dictionary<String, String>]) -> Bool {
+    
+    let maxDifference = 1.5 // inches
+    
+    var heightTeam1 = 0.0
+    var averageHeightTeam1 = 0.0
+    
+    var heightTeam2 = 0.0
+    var averageHeightTeam2 = 0.0
+    
+    var heightTeam3 = 0.0
+    var averageHeightTeam3 = 0.0
+    
+    for player in team1{
+        heightTeam1 += Double(player["heightInInches"]!)!
+    }
+    averageHeightTeam1 = heightTeam1 / Double(team1.count)
+    
+    for player in team2{
+        heightTeam2 += Double(player["heightInInches"]!)!
+    }
+    averageHeightTeam2 = heightTeam2 / Double(team2.count)
+    
+    for player in team3{
+        heightTeam3 += Double(player["heightInInches"]!)!
+    }
+    averageHeightTeam3 = heightTeam3 / Double(team3.count)
+    
+    //print("Average height Team1: \(averageHeightTeam1)")
+    //print("Average height Team2: \(averageHeightTeam2)")
+    //print("Average height Team3: \(averageHeightTeam3)")
+    
+    if ( abs(averageHeightTeam1 - averageHeightTeam2) <= maxDifference &&
+        abs(averageHeightTeam2 - averageHeightTeam3) <= maxDifference ) {
+        return true
+    } else{
+        return false
+    }
+    
+} // func
+
+// Check whether in each team is the same amount of experienced players
+func checkExperiencedPlayersEquality(team1: [Dictionary<String, String>], team2: [Dictionary<String, String>], team3: [Dictionary<String, String>]) -> Bool{
+    
+    var experiencedPlayersTeam1 = 0
+    var experiencedPlayersTeam2 = 0
+    var experiencedPlayersTeam3 = 0
+    
+    for player in team1{
+        if player["playedSoccerBefore"] == "true"{
+            experiencedPlayersTeam1 += 1
+        }
+    }
+    for player in team2{
+        if player["playedSoccerBefore"] == "true"{
+            experiencedPlayersTeam2 += 1
+        }
+    }
+    for player in team3{
+        if player["playedSoccerBefore"] == "true"{
+            experiencedPlayersTeam3 += 1
+        }
+    }
+    
+    if (experiencedPlayersTeam1 == experiencedPlayersTeam2 && experiencedPlayersTeam2 == experiencedPlayersTeam3){
+        return true
+    } else{
+        return false
+    }
+} // func
+
+
