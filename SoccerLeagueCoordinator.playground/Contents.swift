@@ -32,7 +32,6 @@
  18 Herschel Krustofski;45;YES;Hyman and Rachel Krustofski
  */
 
-
 let player1: [String: String] = ["name": "Joe Smith", "heightInInches": "42", "playedSoccerBefore": "true" , "guardiansNames": "Jim and Jan Smith"]
 
 let player2: [String: String] = ["name": "Jill Tanner", "heightInInches": "36", "playedSoccerBefore": "true", "guardiansNames": "Clara Tanner"]
@@ -98,14 +97,11 @@ players.append(player16)
 players.append(player17)
 players.append(player18)
 
-
-
 /*
  ####################################
  ############# Part 2 ###############
  ####################################
  */
-
 
 var experiencedPlayers = 0
 var averageHeight = 0.0
@@ -136,7 +132,6 @@ func averageHeightOf(players: [Dictionary<String, String>]) -> Double{
 experiencedPlayers = amountOfExperienced(players: players)
 averageHeight = averageHeightOf(players: players)
 
-
 // Assigning the players to the teams
 func assignPlayersToTeams(players: [Dictionary<String, String>], experiencedPlayers: Int){
     
@@ -151,16 +146,9 @@ func assignPlayersToTeams(players: [Dictionary<String, String>], experiencedPlay
     let maxExperiencedPlayersInTeam = experiencedPlayers / 3
     let maxNotExperiencedPlayersInTeam = (players.count - experiencedPlayers) / 3
     
-    //print(maxExperiencedPlayersInTeam)
-    //print(maxNotExperiencedPlayersInTeam)
-    
-    
-    
     for player in players{
-        
         switch player["playedSoccerBefore"] {
         case "true":
-            
             if experiencedPlayersDragons < maxExperiencedPlayersInTeam{
                 teamDragons.append(player)
                 experiencedPlayersDragons += 1
@@ -171,9 +159,7 @@ func assignPlayersToTeams(players: [Dictionary<String, String>], experiencedPlay
                 teamRaptors.append(player)
                 experiencedPlayersRaptors += 1
             }
-            
         default:
-            
             if notExperiencedPlayersDragons < maxNotExperiencedPlayersInTeam{
                 teamDragons.append(player)
                 notExperiencedPlayersDragons += 1
@@ -184,12 +170,9 @@ func assignPlayersToTeams(players: [Dictionary<String, String>], experiencedPlay
                 teamRaptors.append(player)
                 notExperiencedPlayersRaptors += 1
             }
-            
         } // switch
     } // loop
 } // func
-
-
 
 // Check if average height in teams is nearly equal
 func checkAverageHeightEquality(team1: [Dictionary<String, String>], team2: [Dictionary<String, String>], team3: [Dictionary<String, String>]) -> Bool {
@@ -220,17 +203,12 @@ func checkAverageHeightEquality(team1: [Dictionary<String, String>], team2: [Dic
     }
     averageHeightTeam3 = heightTeam3 / Double(team3.count)
     
-    //print("Average height Team1: \(averageHeightTeam1)")
-    //print("Average height Team2: \(averageHeightTeam2)")
-    //print("Average height Team3: \(averageHeightTeam3)")
-    
     if ( abs(averageHeightTeam1 - averageHeightTeam2) <= maxDifference &&
         abs(averageHeightTeam2 - averageHeightTeam3) <= maxDifference ) {
         return true
     } else{
         return false
     }
-    
 } // func
 
 // Check whether in each team is the same amount of experienced players
@@ -263,23 +241,18 @@ func checkExperiencedPlayersEquality(team1: [Dictionary<String, String>], team2:
     }
 } // func
 
-
 // Swap players from one team to another team by random
 func swapPlayers(team1: inout [Dictionary<String, String>], team2: inout [Dictionary<String, String>],  team3: inout [Dictionary<String, String>]){
     
-    var randTeam1 = Int.random(in: 1...3)
+    let randTeam1 = Int.random(in: 1...3)
     var randTeam2 = Int.random(in: 1...3)
     
     let randPlayer = Int.random(in: 0...team1.count-1)
-    //let randPlayer2 = Int.random(in: 0...team2.count-1)
     
     while randTeam1 == randTeam2{
         randTeam2 = Int.random(in: 1...3)
     }
     
-    //print("RandTeam1: \(randTeam1)")
-    //print("RandTeam2: \(randTeam2)")
-    //print("")
     switch randTeam1 {
     case 1:
         switch randTeam2 {
@@ -349,7 +322,6 @@ while !checkAverageHeightEquality(team1: teamRaptors, team2: teamSharks, team3: 
 
 /*
  Team practice dates/times:
- 
  Dragons - March 17, 1pm
  Sharks - March 17, 3pm
  Raptors - March 18, 1pm
@@ -365,16 +337,11 @@ let teamDragonsHash = teamDragons.hashValue
 let teamSharksHash = teamSharks.hashValue
 let teamRaptorsHash = teamRaptors.hashValue
 
-
-
 var letters: [String] = []
 
+// Write and print all the letters an fill the letters collection
 func writeAndPrintLetters(team1: [Dictionary<String, String>], team2: [Dictionary<String, String>],  team3: [Dictionary<String, String>]){
-    
-    
-    
     let allTeams = [team1, team2, team3]
-    
     // Iterate through all teams
     for team in allTeams{
         
@@ -399,19 +366,9 @@ func writeAndPrintLetters(team1: [Dictionary<String, String>], team2: [Dictionar
                 print(tempLetter)
             }
         }
-        
         print("")
-        
-        
     }
-    
-    
-    
-    
-    
-    
 }
-
 
 writeAndPrintLetters(team1: teamDragons, team2: teamSharks, team3: teamRaptors)
 
