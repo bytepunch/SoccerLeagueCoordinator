@@ -127,3 +127,56 @@ func averageHeightOf(players: [Dictionary<String, String>]) -> Double{
 experiencedPlayers = amountOfExperienced(players: players)
 averageHeight = averageHeightOf(players: players)
 
+
+// Assigning the players to the teams
+func assignPlayersToTeams(players: [Dictionary<String, String>], experiencedPlayers: Int){
+    
+    var experiencedPlayersDragons = 0
+    var experiencedPlayersSharks = 0
+    var experiencedPlayersRaptors = 0
+    
+    var notExperiencedPlayersDragons = 0
+    var notExperiencedPlayersSharks = 0
+    var notExperiencedPlayersRaptors = 0
+    
+    let maxExperiencedPlayersInTeam = experiencedPlayers / 3
+    let maxNotExperiencedPlayersInTeam = (players.count - experiencedPlayers) / 3
+    
+    //print(maxExperiencedPlayersInTeam)
+    //print(maxNotExperiencedPlayersInTeam)
+    
+    
+    
+    for player in players{
+        
+        switch player["playedSoccerBefore"] {
+        case "true":
+            
+            if experiencedPlayersDragons < maxExperiencedPlayersInTeam{
+                teamDragons.append(player)
+                experiencedPlayersDragons += 1
+            } else if (experiencedPlayersSharks < maxExperiencedPlayersInTeam){
+                teamSharks.append(player)
+                experiencedPlayersSharks += 1
+            } else if (experiencedPlayersRaptors < maxExperiencedPlayersInTeam){
+                teamRaptors.append(player)
+                experiencedPlayersRaptors += 1
+            }
+            
+        default:
+            
+            if notExperiencedPlayersDragons < maxNotExperiencedPlayersInTeam{
+                teamDragons.append(player)
+                notExperiencedPlayersDragons += 1
+            } else if (notExperiencedPlayersSharks < maxNotExperiencedPlayersInTeam){
+                teamSharks.append(player)
+                notExperiencedPlayersSharks += 1
+            } else if (notExperiencedPlayersRaptors < maxNotExperiencedPlayersInTeam){
+                teamRaptors.append(player)
+                notExperiencedPlayersRaptors += 1
+            }
+            
+        } // switch
+    } // loop
+} // func
+
