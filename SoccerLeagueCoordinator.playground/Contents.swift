@@ -10,7 +10,7 @@
  */
 
 /*
- Players datas
+ Player datas
  
  1 Joe Smith;42;YES;Jim and Jan Smith
  2 Jill Tanner;36;YES;Clara Tanner
@@ -78,6 +78,9 @@ var teamDragons = [Dictionary<String, String>]()
 // Players of team Raptors
 var teamRaptors = [Dictionary<String, String>]()
 
+var allTeams = [teamSharks, teamDragons, teamRaptors]
+
+
 players.append(player1)
 players.append(player2)
 players.append(player3)
@@ -143,8 +146,8 @@ func assignPlayersToTeams(players: [Dictionary<String, String>], experiencedPlay
     var notExperiencedPlayersSharks = 0
     var notExperiencedPlayersRaptors = 0
     
-    let maxExperiencedPlayersInTeam = experiencedPlayers / 3
-    let maxNotExperiencedPlayersInTeam = (players.count - experiencedPlayers) / 3
+    let maxExperiencedPlayersInTeam = experiencedPlayers / allTeams.count
+    let maxNotExperiencedPlayersInTeam = (players.count - experiencedPlayers) / allTeams.count
     
     for player in players{
         switch player["playedSoccerBefore"] {
@@ -175,9 +178,7 @@ func assignPlayersToTeams(players: [Dictionary<String, String>], experiencedPlay
 } // func
 
 // Check if average height in teams is nearly equal
-func checkAverageHeightEquality(team1: [Dictionary<String, String>], team2: [Dictionary<String, String>], team3: [Dictionary<String, String>]) -> Bool {
-    
-    let maxDifference = 1.5 // inches
+func checkAverageHeightEquality(team1: [Dictionary<String, String>], team2: [Dictionary<String, String>], team3: [Dictionary<String, String>], maxDifference: Double) -> Bool {
     
     var heightTeam1 = 0.0
     var averageHeightTeam1 = 0.0
@@ -244,13 +245,13 @@ func checkExperiencedPlayersEquality(team1: [Dictionary<String, String>], team2:
 // Swap players from one team to another team by random
 func swapPlayers(team1: inout [Dictionary<String, String>], team2: inout [Dictionary<String, String>],  team3: inout [Dictionary<String, String>]){
     
-    let randTeam1 = Int.random(in: 1...3)
-    var randTeam2 = Int.random(in: 1...3)
+    let randTeam1 = Int.random(in: 1...allTeams.count)
+    var randTeam2 = Int.random(in: 1...allTeams.count)
     
     let randPlayer = Int.random(in: 0...team1.count-1)
     
     while randTeam1 == randTeam2{
-        randTeam2 = Int.random(in: 1...3)
+        randTeam2 = Int.random(in: 1...allTeams.count)
     }
     
     switch randTeam1 {
@@ -303,9 +304,11 @@ func swapPlayers(team1: inout [Dictionary<String, String>], team2: inout [Dictio
 assignPlayersToTeams(players: players, experiencedPlayers: experiencedPlayers)
 
 
+let maxDifference = 1.5 // inches
+
 var breakout = 0
 // Swap players until in each team is the same amunt of experienced players and the average height is equal or less the maximal difference (1.5 inches). If its impossible break after 100.000 iterations
-while !checkAverageHeightEquality(team1: teamRaptors, team2: teamSharks, team3: teamDragons) || !checkExperiencedPlayersEquality(team1: teamRaptors, team2: teamSharks, team3: teamDragons) {
+while !checkAverageHeightEquality(team1: teamRaptors, team2: teamSharks, team3: teamDragons, maxDifference: maxDifference) || !checkExperiencedPlayersEquality(team1: teamRaptors, team2: teamSharks, team3: teamDragons) {
     swapPlayers(team1: &teamDragons, team2: &teamSharks, team3: &teamRaptors)
     if breakout == 100000 {
         break
@@ -337,30 +340,36 @@ let teamDragonsHash = teamDragons.hashValue
 let teamSharksHash = teamSharks.hashValue
 let teamRaptorsHash = teamRaptors.hashValue
 
+
+allTeams.removeAll()
+allTeams.append(teamDragons)
+allTeams.append(teamSharks)
+allTeams.append(teamRaptors)
+
 var letters: [String] = []
 
 // Write and print all the letters and fill the letters collection
-func writeAndPrintLetters(team1: [Dictionary<String, String>], team2: [Dictionary<String, String>],  team3: [Dictionary<String, String>]){
-    let allTeams = [team1, team2, team3]
+func writeAndPrintLetters(allTeams: [[Dictionary<String, String>]]){
+    //let allTeams = [team1, team2, team3]
     // Iterate through all teams
     for team in allTeams{
         // Check team
         if team.hashValue == teamDragonsHash{
             // Iteare through team
             for player in team{
-                let tempLetter = "Dear \(player["guardiansNames"]!)!\n\n\(player["name"]!) has been placed in team \(practiceDateTime[0]["team"]!).\nTraining starts at \(practiceDateTime[0]["date"]!), \(practiceDateTime[0]["time"]!).\n\nYours sincerely \n\nJörg Klausewitz"
+                let tempLetter = "Dear \(player["guardiansNames"]!)!\n\n\(player["name"]!) has been placed in team \(practiceDateTime[0]["team"]!).\nTraining starts at \(practiceDateTime[0]["date"]!), \(practiceDateTime[0]["time"]!).\n\nYou are cordially invited to visit the training! We have free beer sponsored by Treehouse.\n\nYours sincerely \n\nJohn Doe"
                 letters.append(tempLetter)
                 //print(tempLetter)
             }
         } else if(team.hashValue == teamSharksHash){
             for player in team{
-                let tempLetter = "Dear \(player["guardiansNames"]!)!\n\n\(player["name"]!) has been placed in team \(practiceDateTime[1]["team"]!).\nTraining starts at \(practiceDateTime[1]["date"]!), \(practiceDateTime[1]["time"]!).\n\nYours sincerely \n\nJörg Klausewitz"
+                let tempLetter = "Dear \(player["guardiansNames"]!)!\n\n\(player["name"]!) has been placed in team \(practiceDateTime[1]["team"]!).\nTraining starts at \(practiceDateTime[1]["date"]!), \(practiceDateTime[1]["time"]!).\n\nYou are cordially invited to visit the training! We have free beer sponsored by Treehouse.\n\nYours sincerely \n\nJohn Doe"
                 letters.append(tempLetter)
                 //print(tempLetter)
             }
         } else if(team.hashValue == teamRaptorsHash){
             for player in team{
-                let tempLetter = "Dear \(player["guardiansNames"]!)!\n\n\(player["name"]!) has been placed in team \(practiceDateTime[2]["team"]!). Training starts at \(practiceDateTime[2]["date"]!), \(practiceDateTime[2]["time"]!).\n\nYours sincerely \n\nJörg Klausewitz"
+                let tempLetter = "Dear \(player["guardiansNames"]!)!\n\n\(player["name"]!) has been placed in team \(practiceDateTime[2]["team"]!). Training starts at \(practiceDateTime[2]["date"]!), \(practiceDateTime[2]["time"]!).\n\nYou are cordially invited to visit the training! We have free beer sponsored by Treehouse.\n\nYours sincerely \n\nJohn Doe"
                 letters.append(tempLetter)
                 //print(tempLetter)
             }
@@ -377,8 +386,8 @@ func printLettersInConsole(){
     }
 }
 
-writeAndPrintLetters(team1: teamDragons, team2: teamSharks, team3: teamRaptors)
-
+// Write the letters
+writeAndPrintLetters(allTeams: allTeams)
 printLettersInConsole()
 
 
