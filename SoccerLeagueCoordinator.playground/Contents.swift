@@ -304,7 +304,7 @@ func swapPlayers(team1: inout [Dictionary<String, String>], team2: inout [Dictio
 assignPlayersToTeams(players: players, experiencedPlayers: experiencedPlayers)
 
 
-let maxDifference = 1.5 // inches
+let maxDifference = 1.5 // Max difference in height between the teams in inches
 
 var breakout = 0
 // Swap players until in each team is the same amunt of experienced players and the average height is equal or less the maximal difference (1.5 inches). If its impossible break after 100.000 iterations
@@ -340,7 +340,7 @@ let teamDragonsHash = teamDragons.hashValue
 let teamSharksHash = teamSharks.hashValue
 let teamRaptorsHash = teamRaptors.hashValue
 
-
+// Put the now filled dictionaries in the array
 allTeams.removeAll()
 allTeams.append(teamDragons)
 allTeams.append(teamSharks)
