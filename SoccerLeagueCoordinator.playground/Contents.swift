@@ -316,6 +316,13 @@ while !checkAverageHeightEquality(team1: teamRaptors, team2: teamSharks, team3: 
     breakout += 1
 }
 
+// Print average height of each team on console
+func printAverageHeightInConsole(){
+    print("Average height team Sharks: \(averageHeightOf(players: teamSharks))")
+    print("Average height team Dragons: \(averageHeightOf(players: teamDragons))")
+    print("Average height team Raptors: \(averageHeightOf(players: teamRaptors))")
+}
+
 
 /*
  ####################################
@@ -386,8 +393,13 @@ func printLettersInConsole(){
     }
 }
 
+// Prnt average height of each team
+printAverageHeightInConsole()
+
 // Write the letters
 writeAndPrintLetters(allTeams: allTeams)
 printLettersInConsole()
+
+
 
 
