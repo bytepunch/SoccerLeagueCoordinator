@@ -305,12 +305,13 @@ assignPlayersToTeams(players: players, experiencedPlayers: experiencedPlayers)
 
 
 let maxDifference = 1.5 // Max difference in height between the teams in inches
-
 var breakout = 0
+let exit = 100000 // iterations before exit the while loop
+
 // Swap players until in each team is the same amunt of experienced players and the average height is equal or less the maximal difference (1.5 inches). If its impossible break after 100.000 iterations
 while !checkAverageHeightEquality(team1: teamRaptors, team2: teamSharks, team3: teamDragons, maxDifference: maxDifference) || !checkExperiencedPlayersEquality(team1: teamRaptors, team2: teamSharks, team3: teamDragons) {
     swapPlayers(team1: &teamDragons, team2: &teamSharks, team3: &teamRaptors)
-    if breakout == 100000 {
+    if breakout == exit {
         break
     }
     breakout += 1
