@@ -393,13 +393,9 @@ func printLettersInConsole(){
     }
 }
 
-// Prnt average height of each team
+// Print average height of each team
 printAverageHeightInConsole()
 
 // Write the letters
 writeAndPrintLetters(allTeams: allTeams)
 printLettersInConsole()
-
-
-
-
