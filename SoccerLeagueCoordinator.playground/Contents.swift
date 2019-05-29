@@ -399,4 +399,5 @@ printAverageHeightInConsole()
 
 // Write the letters
 writeAndPrintLetters(allTeams: allTeams)
-printLettersInConsole()
+//printLettersInConsole()
+print(breakout)
